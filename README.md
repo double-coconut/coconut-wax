@@ -47,6 +47,7 @@ Coconut Wax SDK is committed to evolving and expanding its feature set, ensuring
 | 2020.3.x |  ✅     |
 | 2021.3.x |  ✅     |
 | 2022.3.x |  ✅     |
+
 **Supported Platforms!**
 | Platform  			 | Support |
 |------------------------|---------|
@@ -79,7 +80,7 @@ If you manage to import the sample project, follow these steps to run it:
 2.  Open the scene located at: `Sample -> com.doublecoconut.coconutwax -> CoconutWaxWallet -> Scenes -> SampleScene.unity`.
 
 > **Note:** Make sure you have selected the correct platform (Android, iOS, Standalone) before running the scene.
-For more information, see this [documentation](https://github.com/doublecoconut/coconutwax).
+For more information, see this [documentation](https://github.com/doublecoconut/coconut-wax/sample-readme.md).
 
 # Quick Start
 
