@@ -27,7 +27,7 @@ Coconut Wax SDK is a full-fledged solution for easy and enhanced integration of 
 - **Custom Avatar**: Users of mycloudwallet can get their custom avatar.
 - **Custom Token Contracts**: Include specific contract tokens in the SDK configuration, allowing precise token balance retrieval and manipulation.
 - **User Account Balance**: Fetch and update user account balances effortlessly.
-- **Owned NFT Listing**: Retrieve a list of NFTs owned by the user.
+- **Account NFT Collection**: Retrieve a list of NFTs owned by the user.
 - **Transactions**: Execute transactions seamlessly.
 	- **Token Transfer**: Transfer tokens from one account to another with ease.
 	- **NFT Transfer**: Transfer NFTs between accounts.
@@ -75,8 +75,8 @@ Here are the detailed instructions for installing and setting up the CoconutWax 
     -   If you want to try the sample application and explore all the features and implementations, hit the `Import Sample` button after completing the SDK setup process.
 
 ### Sample Overview
-If you manage to import the sample project, follow these steps to run it:
-1.  After importing the project, navigate to your Assets folder.
+After importing the sample project, follow these steps to run it:
+1.  Navigate to your Assets folder.
 2.  Open the scene located at: `Sample -> com.doublecoconut.coconutwax -> CoconutWaxWallet -> Scenes -> SampleScene.unity`.
 
 > **Note:** Make sure you have selected the correct platform (Android, iOS, Standalone) before running the scene.
@@ -90,7 +90,7 @@ To quickly get started with CoconutWax in your project, follow these steps:
     -   Create an empty GameObject in your Unity scene.
     -   Attach the `CoconutWaxRuntime` component to the GameObject.
 2.  **Optional: Set Custom Port:**
-    -   In the component properties, you can set a custom port if desired (default port is 2023).
+    -   In the component properties, you can set a custom port if needed/required (default port is 2023).
 3.  **Accessing the SDK:**    
     -   From your scripts, you can access the main SDK class using:
        ```csharp
@@ -165,7 +165,7 @@ RefreshBalancePayloadData balanceData =
 
 # Platform specific setup
 ### Android
-- You should enable clear text traffic in the UniWebView plugin, see details [here](https://docs.uniwebview.com/guide/faq.html#the-page-does-not-load-on-android-but-shows-net-err-cleartext-not-permitted)
+- Enable clear text traffic in the UniWebView plugin, see details [here](https://docs.uniwebview.com/guide/faq.html#the-page-does-not-load-on-android-but-shows-net-err-cleartext-not-permitted)
 - Under the Project Settings -> Player -> [Android Platform] -> Publishing Settings
 	- In the Build section, enable the `Custom Main Manifest` and `Custom Gradle Properties Template` options.
 - Make sure `android.useAndroidX=true` is enabled in the `gradleTemplate.properties` file.
@@ -258,4 +258,4 @@ private async void OnAuthButtonClicked() {
 ```
 
 ## License
-UniWebView - We purchased the source code for the UniWebView package, compiled it into binaries, and then included it in our SDK.
+UniWebView - Source code for the UniWebView package was purchased and compiled into binaries, and then included in the SDK.
