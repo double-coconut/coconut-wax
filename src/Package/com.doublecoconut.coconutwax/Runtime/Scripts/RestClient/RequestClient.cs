@@ -227,15 +227,18 @@ namespace RestClient
             {
                 operation.completed -= OperationOnCompleted;
 
-                if (_request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError ||
-                    _request.result == UnityWebRequest.Result.DataProcessingError)
+                switch (_request.result)
                 {
-                    CoconutWaxLogger.Log($"[{_request.method}], {_request.url}: {_request.error}",
-                        Logger.LogType.Error);
-                    tcs.SetException(new Exception(_request.error));
-                    ClearRequest();
-                    return;
+                    case UnityWebRequest.Result.ConnectionError:
+                    case UnityWebRequest.Result.ProtocolError:
+                    case UnityWebRequest.Result.DataProcessingError:
+                        CoconutWaxLogger.Log($"[{_request.method}], {_request.url}: {_request.error}",
+                            Logger.LogType.Error);
+                        tcs.SetException(new Exception(_request.error));
+                        ClearRequest();
+                        return;
                 }
+
 
                 if (_request.result == UnityWebRequest.Result.InProgress)
                 {
@@ -278,14 +281,16 @@ namespace RestClient
             {
                 operation.completed -= OperationOnCompleted;
 
-                if (_request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError ||
-                    _request.result == UnityWebRequest.Result.DataProcessingError)
+                switch (_request.result)
                 {
-                    CoconutWaxLogger.Log($"[{_request.method}], {_request.url}: {_request.error}",
-                        Logger.LogType.Error);
-                    tcs.SetException(new Exception(_request.error));
-                    ClearRequest();
-                    return;
+                    case UnityWebRequest.Result.ConnectionError:
+                    case UnityWebRequest.Result.ProtocolError:
+                    case UnityWebRequest.Result.DataProcessingError:
+                        CoconutWaxLogger.Log($"[{_request.method}], {_request.url}: {_request.error}",
+                            Logger.LogType.Error);
+                        tcs.SetException(new Exception(_request.error));
+                        ClearRequest();
+                        return;
                 }
 
                 if (_request.result == UnityWebRequest.Result.InProgress)
