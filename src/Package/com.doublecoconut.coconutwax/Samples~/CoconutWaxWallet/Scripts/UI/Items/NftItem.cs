@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using AtomicHub;
 using RestClient.Response;
 using Samples.CoconutWaxWallet.Scripts.Data;
@@ -21,10 +22,12 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
         /// The image of the NFT.
         /// </summary>
         [SerializeField] private RawImage image;
+
         /// <summary>
         /// The text field for displaying the title of the NFT.
         /// </summary>
         [SerializeField] private TextMeshProUGUI titleText;
+
         /// <summary>
         /// The button for transferring the NFT.
         /// </summary>
@@ -34,10 +37,30 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
         /// The event that is triggered when the transfer button is clicked.
         /// </summary>
         public readonly UnityEvent<string> TransferEvent = new UnityEvent<string>();
+
         /// <summary>
         /// The NFT asset.
         /// </summary>
         private AssetItem<AlienWorldsAssetData> _asset;
+
+
+#if !UNITY_2022_3
+        private CancellationTokenSource _destroyCancellationTokenSource;
+
+        private CancellationToken destroyCancellationToken
+        {
+            get
+            {
+                if (_destroyCancellationTokenSource==null)
+                {
+                    _destroyCancellationTokenSource = new CancellationTokenSource();
+                }
+
+                return _destroyCancellationTokenSource.Token;
+            }
+        }
+#endif
+
         /// <summary>
         /// The ID of the NFT asset.
         /// </summary>
@@ -47,6 +70,7 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
         {
             transferButton.onClick.AddListener(() => TransferEvent.Invoke(_asset.AssetId));
         }
+
         /// <summary>
         /// Method to set up the NFT item with the given asset.
         /// </summary>
@@ -55,6 +79,7 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
             _asset = asset;
             UpdateUI();
         }
+
         /// <summary>
         /// Method to update the UI of the NFT item.
         /// </summary>
@@ -67,6 +92,7 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
                 RetrieveImage();
             }
         }
+
         /// <summary>
         /// Method to retrieve the image of the NFT.
         /// </summary>
@@ -82,11 +108,15 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.Items
                 Log($"Failed to retrieve image: {e}", LogType.Error);
             }
         }
+
         /// <summary>
         /// Method called when the NFT item is destroyed. It removes all listeners from the transfer event.
         /// </summary>
         private void OnDestroy()
         {
+#if !UNITY_2022_3
+            _destroyCancellationTokenSource.Cancel(false);
+#endif
             TransferEvent.RemoveAllListeners();
         }
     }

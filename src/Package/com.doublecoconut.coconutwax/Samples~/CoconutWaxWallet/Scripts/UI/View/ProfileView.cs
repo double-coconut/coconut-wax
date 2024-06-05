@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+#if !UNITY_2022_3
+using System.Threading;
+#endif
 using System.Threading.Tasks;
 using AtomicHub;
 using RestClient.Response;
@@ -72,6 +75,23 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.View
 
         private readonly List<NftItem> _items = new List<NftItem>();
         private readonly List<BalanceItem> _balanceItems = new List<BalanceItem>();
+        
+#if !UNITY_2022_3
+        private CancellationTokenSource _destroyCancellationTokenSource;
+
+        private CancellationToken destroyCancellationToken
+        {
+            get
+            {
+                if (_destroyCancellationTokenSource==null)
+                {
+                    _destroyCancellationTokenSource = new CancellationTokenSource();
+                }
+
+                return _destroyCancellationTokenSource.Token;
+            }
+        }
+#endif
 
         private void Start()
         {
@@ -80,6 +100,14 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.View
             refreshNftsButton.onClick.AddListener(OnRefreshNftsClicked);
             tokenTransferButton.onClick.AddListener(OnTokenTransferClicked);
         }
+
+        private void OnDestroy()
+        {
+#if !UNITY_2022_3
+            _destroyCancellationTokenSource.Cancel(false);
+#endif
+        }
+
         /// <summary>
         /// Method to initialize the view.
         /// </summary>
