@@ -39,7 +39,11 @@ namespace Wax
         /// <returns>The authentication payload data.</returns>
         public async Task<AuthenticationPayloadData> Authenticate(params string[] tokenContracts)
         {
-            tokenContracts = new[] { DefaultWaxTokenContract }.Union(tokenContracts).ToArray();
+            if (tokenContracts == null || tokenContracts.Length == 0)
+            {
+                tokenContracts = new[] { DefaultWaxTokenContract };
+            }
+
             try
             {
                 string route = $"#authenticate?tokenContracts={string.Join(",", tokenContracts)}";

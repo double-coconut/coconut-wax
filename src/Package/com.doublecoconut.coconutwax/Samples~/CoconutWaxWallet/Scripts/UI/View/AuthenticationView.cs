@@ -42,7 +42,9 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.View
         {
             try
             {
-                string[] contracts = ApplicationSettings.TokenSettings.Contracts.Select(setting => setting.Contract)
+                string[] contracts = ApplicationSettings.TokenSettings.Contracts
+                    .Select(setting => setting.Contract)
+                    .Distinct()
                     .ToArray();
                 AuthenticationPayloadData payloadData =
                     await CoconutWaxRuntime.Instance.CoconutWax.Authenticate(tokenContracts: contracts);
