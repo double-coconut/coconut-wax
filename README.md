@@ -66,7 +66,7 @@ Here are the detailed instructions for installing and setting up the CoconutWax 
 1.  **Install the CoconutWax Package:**
     -   Open the Package Manager in your Unity project.
     -   Select "Add package from git URL" and paste the following URL:
-        `https://github.com/doublecoconut/coconutwax.git?path=src/CoconutWax` 
+        `https://github.com/double-coconut/coconut-wax.git?path=src/Package/com.doublecoconut.coconutwax#master` 
 2.  **Setup the SDK:**
     -   After the package installation is complete, navigate to the toolbar in Unity.
     -   Select `CoconutWax -> Setup`.
