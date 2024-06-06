@@ -66,7 +66,7 @@ Here are the detailed instructions for installing and setting up the CoconutWax 
 1.  **Install the CoconutWax Package:**
     -   Open the Package Manager in your Unity project.
     -   Select "Add package from git URL" and paste the following URL:
-        `https://github.com/doublecoconut/coconutwax.git?path=src/CoconutWax` 
+        `https://github.com/double-coconut/coconut-wax.git?path=src/Package/com.doublecoconut.coconutwax#master` 
 2.  **Setup the SDK:**
     -   After the package installation is complete, navigate to the toolbar in Unity.
     -   Select `CoconutWax -> Setup`.
@@ -80,7 +80,6 @@ After importing the sample project, follow these steps to run it:
 2.  Open the scene located at: `Sample -> com.doublecoconut.coconutwax -> CoconutWaxWallet -> Scenes -> SampleScene.unity`.
 
 > **Note:** Make sure you have selected the correct platform (Android, iOS, Standalone) before running the scene.
-For more information, see this [documentation](https://github.com/doublecoconut/coconut-wax/sample-readme.md).
 
 # Quick Start
 
