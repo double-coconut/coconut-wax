@@ -1,5 +1,5 @@
 # CoconutWAX
-# Tabel Of Contents
+# Table Of Contents
 - [Introduction](#introduction)
 	- [Implemented Features](#implemented-features)
 	- [External Helper Functionalities](#external-helper-functionalities)
@@ -21,12 +21,19 @@
 	- [Exception Handling](#exception-handling)
 - [License](#license)
 # Introduction
-Coconut Wax SDK is a full-fledged solution for easy and enhanced integration of Wax blockchain functionality into your apps. It bridges JavaScript and C# to make the experience of developers working with Wax blockchain features easy and seamless.
+Having identified a gap with a secure and working Unity SDK for the WAX wallet to support Android and iOS apps and games. We have created one for the community and hope it is useful! 
+
+The Double Coconut WAX SDK is a full-fledged solution for easy and enhanced integration of the Wax Cloud Wallet, allowing for blockchain functionality into your apps. It bridges JavaScript and C# to make the experience of developers working with the WAX blockchain easy and seamless.
+
+A sample Unity project is included for ease of integration.
+
+The Double Coconut Wax SDK is committed to evolving and expanding its feature set, ensuring that developers have all the tools they need to build powerful applications on the Wax blockchain.
+
 ### Implemented Features
 - **Authentication**: Manage user sessions with straightforward login and logout functionality.
-- **Custom Avatar**: Users of mycloudwallet can get their custom avatar.
-- **Custom Token Contracts**: Include specific contract tokens in the SDK configuration, allowing precise token balance retrieval and manipulation.
-- **User Account Balance**: Fetch and update user account balances effortlessly.
+- **Custom Avatar**: Users of MyCloudWallet can get their custom avatar.
+- **Custom Token Contracts**: Include specific contract tokens in the SDK configuration, allowing precise token balance retrieval and manipulation of those tokens.
+- **User Account Balance**: Fetch and update user account balances effortlessly for all fungible tokens.
 - **Account NFT Collection**: Retrieve a list of NFTs owned by the user.
 - **Transactions**: Execute transactions seamlessly.
 	- **Token Transfer**: Transfer tokens from one account to another with ease.
@@ -36,9 +43,8 @@ Coconut Wax SDK is a full-fledged solution for easy and enhanced integration of 
 - **Wallet Sample**: A fully-featured wallet project that integrates all SDK functionalities, along with additional features such as UI services, session storage, atomic asset manipulation, and exception handling.
 - **Coconut Wax Editor Tool**: This tool automates the SDK integration process, streamlining development workflows.
 - **Uniwebview SDK Integration**: Compiled into binary files, this dependency is automatically installed 
-through the Coconut Wax Editor.
+through the Coconut Wax Editor and opens a web browser view in your game / app where the cloud wallet web application can be cleanly embedded.
 
-Coconut Wax SDK is committed to evolving and expanding its feature set, ensuring that developers have all the tools they need to build powerful applications on the Wax blockchain.
 
 #### Version Support
 **Supported Unity Editor Versions!**
@@ -59,10 +65,9 @@ Coconut Wax SDK is committed to evolving and expanding its feature set, ensuring
 | Windows(Unity Editor)  |  ✅     |
 | WebGL  				 |  ❌     |
 
-
 # Installation
 ### UPM Package
-Here are the detailed instructions for installing and setting up the CoconutWax SDK:
+Here are the detailed instructions for installing and setting up the Double Coconut WAX SDK:
 1.  **Install the CoconutWax Package:**
     -   Open the Package Manager in your Unity project.
     -   Select "Add package from git URL" and paste the following URL:
@@ -172,10 +177,10 @@ RefreshBalancePayloadData balanceData =
 > Nothing specific is required
 
 # Logging
-CoconutWax includes its own logging system with various levels of logging to help you monitor and debug the SDK's activities. The logger can be accessed and configured through the `CoconutWaxLogger` static class.
+The Double Coconut WAX SDK includes its own logging system with various levels of logging to help you monitor and debug the SDK's activities. The logger can be accessed and configured through the `CoconutWaxLogger` static class.
 - You can configure the logger's behavior by setting the log type using the static method `SetLogType(LogType logType)`.
 
-The `LogType` enum in CoconutWax is used to define the different levels of logging that can be enabled. Each log type corresponds to a different severity or category of log messages. You can combine multiple log types using bitwise operations to customize the logging behavior.
+The `LogType` enum in the Double Coconut WAX SDK is used to define the different levels of logging that can be enabled. Each log type corresponds to a different severity or category of log messages. You can combine multiple log types using bitwise operations to customize the logging behavior.
 
 **Enum Values**
 - **None**
@@ -195,9 +200,9 @@ To set the log type to a combination of different log levels, you can use the bi
 CoconutWaxLogger.SetLogType(LogType.Warning | LogType.Error);
 ```
 
-## CoconutWax Workflow Diagram
+## Double Coconut WAX SDK Workflow Diagram
 ### Authentication Diagram
-The authentication process in CoconutWax begins when the client initiates a transaction to authenticate. CoconutWax starts a local server to facilitate the operation and serves a webpage containing the wax.js script through a WebView. Wax.js then initiates and presents an authentication popup to the client. The client approves the authentication transaction via this popup. Wax.js captures the authentication payload data and sends it back to the WebView, which then relays the transaction result to CoconutWax. Finally, CoconutWax returns the authentication result to the client.
+The authentication process in the Double Coconut WAX SDK begins when the client initiates a transaction to authenticate. The Double Coconut WAX SDK starts a local server to facilitate the operation and serves a webpage containing the wax.js script through a WebView. Wax.js then initiates and presents an authentication popup to the client. The client approves the authentication transaction via this popup. Wax.js captures the authentication payload data and sends it back to the WebView, which then relays the transaction result to the SDK. Finally, the SDK returns the authentication result to the client.
 ```mermaid
 sequenceDiagram
 Client ->> CoconutWax: Initiate Transaction
@@ -211,7 +216,7 @@ WebView ->> CoconutWax: Transaction Result
 CoconutWax ->> Client: Return Result
 ```
 ### Token/NFT Transfer Diagram
-When the client initiates a token or NFT transfer, CoconutWax starts a local server to manage the process and serves a webpage with the wax.js script using a WebView. Wax.js initiates and displays an authentication popup to the client, who must first approve this transaction. Once authenticated, wax.js presents a token or NFT transfer popup to the client. Upon client approval, wax.js gathers the transfer payload data and sends it back to the WebView. The WebView then communicates the transaction result to CoconutWax, which subsequently returns the final result to the client.
+When the client initiates a token or NFT transfer, the Double Coconut WAX SDK starts a local server to manage the process and serves a webpage with the wax.js script using a WebView. Wax.js initiates and displays an authentication popup to the client, who must first approve this transaction. Once authenticated, wax.js presents a token or NFT transfer popup to the client. Upon client approval, wax.js gathers the transfer payload data and sends it back to the WebView. The WebView then communicates the transaction result to the SDK, which subsequently returns the final result to the client.
 ```mermaid
 sequenceDiagram
 Client ->> CoconutWax: Initiate Transaction
@@ -228,7 +233,7 @@ CoconutWax ->> Client: Return Result
 ```
 
 ### Account Balance Refresh Diagram
-For refreshing the account contract token balance, the client initiates the transaction through CoconutWax, which starts a local server. This server serves a webpage with the wax.js script using a silent WebView to avoid interrupting the user experience. Wax.js initiates and executes the balance refresh operation silently. It then returns the refreshed balance payload data to the silent WebView, which sends the transaction result back to CoconutWax. Finally, CoconutWax communicates the result of the balance refresh to the client.
+For refreshing the account contract token balance, the client initiates the transaction through the Double Coconut WAX SDK, which starts a local server. This server serves a webpage with the wax.js script using a silent WebView to avoid interrupting the user experience. Wax.js initiates and executes the balance refresh operation silently. It then returns the refreshed balance payload data to the silent WebView, which sends the transaction result back to CoconutWax. Finally, the SDK communicates the result of the balance refresh to the client.
 ```mermaid
 sequenceDiagram
 Client ->> CoconutWax: Initiate Transaction
@@ -257,4 +262,5 @@ private async void OnAuthButtonClicked() {
 ```
 
 ## License
-UniWebView - Source code for the UniWebView package was purchased and compiled into binaries, and then included in the SDK.
+This code is open source per the MIT License.
+UniWebView - Source code for the UniWebView package was purchased and compiled into binaries, and then included in the SDK. This may not be redistributed or modified.
