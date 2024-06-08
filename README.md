@@ -115,7 +115,9 @@ To quickly get started with CoconutWax in your project, follow these steps:
     -   **Returns:** `AuthenticationPayloadData` (see more under the Payload section).
 ```csharp
 AuthenticationPayloadData authData = await coconutWax.Authenticate("eosio.token"); 
-```   
+```
+![image](https://github.com/double-coconut/coconut-wax/assets/1616131/8b930e21-875d-4ca0-882d-9217b491058f)
+
 2.  **TransferNFT**
     -   **Description:** An asynchronous method that transfers the NFT to the specified account.
     -   **Parameters:**
