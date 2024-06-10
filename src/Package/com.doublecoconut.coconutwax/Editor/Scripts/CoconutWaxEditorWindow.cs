@@ -19,11 +19,12 @@ namespace CoconutWax.Editor.Scripts
         public const string PackageName = "com.doublecoconut.coconutwax";
 
         private const string _sampleName = "CoconutWaxWallet";
+        private const string _jsLibFolderName = "CoconutWaxWeb";
         private string _samplePath => $"{PackagePathLocator.PackageBasePath}/Samples~/{_sampleName}";
         private string _sampleDestinationPath => $"Assets/Samples/{PackageName}/{_sampleName}";
 
         private const string _streamingAssetsFolder = "StreamingAssets";
-        private static readonly string _destinationFolder = $"Assets/{_streamingAssetsFolder}";
+        private static readonly string _destinationFolder = $"Assets/{_streamingAssetsFolder}/{_jsLibFolderName}";
 
         private string _uniWebViewPackagePath =>
             $"{PackagePathLocator.PackageBasePath}/Packages/UniWebView_DLL_Packages.unitypackage";
@@ -165,7 +166,7 @@ namespace CoconutWax.Editor.Scripts
             if (GUILayout.Button("Setup", GUILayout.Width(200), GUILayout.Height(40)))
             {
                 ImportUnityPackage(_uniWebViewPackagePath);
-                CopyFolder(Path.Combine(PackagePathLocator.PackageBasePath, _streamingAssetsFolder),
+                CopyFolder(Path.Combine(PackagePathLocator.PackageBasePath, _streamingAssetsFolder,_jsLibFolderName),
                     _destinationFolder);
                 AssetDatabase.Refresh();
                 Debug.Log("Setup completed: Folder copied");
