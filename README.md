@@ -115,7 +115,9 @@ To quickly get started with CoconutWax in your project, follow these steps:
     -   **Returns:** `AuthenticationPayloadData` (see more under the Payload section).
 ```csharp
 AuthenticationPayloadData authData = await coconutWax.Authenticate("eosio.token"); 
-```   
+```
+![image](https://github.com/double-coconut/coconut-wax/assets/1616131/8b930e21-875d-4ca0-882d-9217b491058f)
+
 2.  **TransferNFT**
     -   **Description:** An asynchronous method that transfers the NFT to the specified account.
     -   **Parameters:**
@@ -129,7 +131,9 @@ TransferNFTPayloadData nftTransferData =
 	 "asset_id_1",
 	 "asset_id_2"
 	}, "optional memo");
-``` 
+```
+![image](https://github.com/double-coconut/coconut-wax/assets/1616131/48bb974d-84d7-4549-979f-bb9fe0e8c1c8)
+
 3.  **TransferToken**
     -   **Description:** An asynchronous method that transfers the token to the specified account.
     -   **Parameters:**
@@ -149,6 +153,8 @@ TransferTokenPayloadData tokenTransferData =
 		"optional memo"
 	);
 ```
+![image](https://github.com/double-coconut/coconut-wax/assets/1616131/bfac2812-168b-455f-b4f7-a998fcf46992)
+
 4.  **RefreshBalance**
     -   **Description:** An asynchronous method that refreshes the balance of the specified user account.
     -   **Parameters:**
