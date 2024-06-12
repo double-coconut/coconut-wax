@@ -36,10 +36,10 @@ namespace AtomicHub
             int page = 1, int limit = 50,
             CancellationToken cancellationToken = default)
         {
-            string url = $"{BaseUrl}/atomicassets/v1/assets?owner={owner}&page={page}&limit={limit}";
+            string url = $"{BaseUrl}atomicassets/v1/assets?owner={owner}&page={page}&limit={limit}";
             if (isTransferable != null)
             {
-                url += $"&is_transferable={isTransferable}";
+                url += $"&is_transferable={isTransferable.ToString().ToLower()}";
             }
 
             IRequestClientSender request = RequestClient
