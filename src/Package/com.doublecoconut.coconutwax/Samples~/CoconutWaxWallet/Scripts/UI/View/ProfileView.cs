@@ -104,7 +104,7 @@ namespace Samples.CoconutWaxWallet.Scripts.UI.View
         private void OnDestroy()
         {
 #if !UNITY_2022_3
-            _destroyCancellationTokenSource.Cancel(false);
+            _destroyCancellationTokenSource?.Cancel(false);
 #endif
         }
 
