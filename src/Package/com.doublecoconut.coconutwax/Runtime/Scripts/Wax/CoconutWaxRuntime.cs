@@ -13,6 +13,11 @@ namespace Wax
         [SerializeField] private uint port = 2023;
 
         /// <summary>
+        /// User agent for the CoconutWax instance.
+        /// </summary>
+        [SerializeField] private string userAgent = CoconutWax.DefaultUserAgent;
+
+        /// <summary>
         /// The CoconutWax instance managed by this MonoBehaviour.
         /// </summary>
         public CoconutWax CoconutWax { get; private set; }
@@ -43,7 +48,7 @@ namespace Wax
         /// </summary>
         private void Start()
         {
-            CoconutWax = new CoconutWax(port);
+            CoconutWax = new CoconutWax(port, userAgent);
         }
 
         /// <summary>
