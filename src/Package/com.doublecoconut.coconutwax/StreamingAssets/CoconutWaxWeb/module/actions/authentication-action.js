@@ -21,7 +21,7 @@ export class AuthenticationAction extends Action {
         this.result.data.avatarUrl = this.wax.user.avatarUrl;
         this.result.data.isTemp = this.wax.user.isTemp;
         this.result.data.keys = this.wax.user.keys;
-        this.result.data.trustScore = this.wax.user.trustScore;
+        this.result.data.trustScore = this.wax.user.trustScore || 0;
         this.result.data.trustScoreProvider = this.wax.user.trustScoreProvider;
         this.result.data.balance = balance;
     }
