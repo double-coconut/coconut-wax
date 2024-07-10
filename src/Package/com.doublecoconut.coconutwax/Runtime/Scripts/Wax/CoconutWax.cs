@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Server;
+using Wax.Exceptions;
 using Wax.Payload;
 #if UNIWEBVIEW
 using Tools;
@@ -233,7 +234,7 @@ namespace Wax
             {
                 if (!webViewMessageHandled)
                 {
-                    tcs.SetException(new Exception("WebView message not handled"));
+                    tcs.SetException(new UnhandledWebViewMessageException("WebView message not handled"));
                 }
 
                 return true;
