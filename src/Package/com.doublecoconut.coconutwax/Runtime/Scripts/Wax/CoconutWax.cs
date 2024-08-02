@@ -20,17 +20,7 @@ namespace Wax
     public sealed class CoconutWax : IDisposable
     {
         public const string DefaultWaxTokenContract = "eosio.token";
-
-        public const string DefaultUserAgent =
-#if UNITY_ANDROID
-                "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36"
-#elif UNITY_IOS
-                "Mozilla/5.0 (iPhone; CPU iPhone OS like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1"
-#else
-                "Mozilla/5.0 (iPhone; CPU iPhone OS like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/12.1 Mobile/15E148 Safari/604.1"
-#endif
-            ;
-
+        
         private LocalServer localServer;
         private readonly uint _port;
         private string _currentUserAgent;
@@ -39,10 +29,11 @@ namespace Wax
         /// Initializes a new instance of the CoconutWax class with the specified port.
         /// </summary>
         /// <param name="port">The port number for the local server.</param>
+        /// <param name="userAgent">The user agent for UniWebView.</param>
         public CoconutWax(uint port = 2023, string userAgent = null)
         {
             _port = port;
-            _currentUserAgent = string.IsNullOrEmpty(userAgent) ? DefaultUserAgent : userAgent;
+            _currentUserAgent = userAgent;
         }
 
 
@@ -226,7 +217,11 @@ namespace Wax
             webView.EmbeddedToolbar.Show();
             webView.EmbeddedToolbar.HideNavigationButtons();
             Log("Default WebView UserAgent: " + webView.GetUserAgent(), LogType.Log);
-            webView.SetUserAgent(_currentUserAgent);
+            if (!string.IsNullOrEmpty(_currentUserAgent))
+            {
+                webView.SetUserAgent(_currentUserAgent);
+            }
+
             Log("Selected UserAgent: " + webView.GetUserAgent(), LogType.Log);
             // webview.OnMessageReceived += WebViewMessageReceived;
             webView.OnMessageReceived += WebViewMessageReceived;

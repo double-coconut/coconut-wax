@@ -1,7 +1,21 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Wax
 {
+    /// <summary>
+    /// The CustomUserAgent class used to store a custom user agent for a specific platform.
+    /// </summary>
+    [Serializable]
+    public struct CustomUserAgent
+    {
+        [field: SerializeField] public string UserAgent { get; private set; }
+        [field: SerializeField] public RuntimePlatform Platform { get; private set; }
+
+        public bool IsValid => !string.IsNullOrEmpty(UserAgent);
+    }
+
     /// <summary>
     /// The CoconutWaxRuntime class is a MonoBehaviour that manages a CoconutWax instance.
     /// </summary>
@@ -13,9 +27,14 @@ namespace Wax
         [SerializeField] private uint port = 2023;
 
         /// <summary>
+        /// Enable user custom agent for the CoconutWax instance.
+        /// </summary>
+        [SerializeField] private bool useCustomUserAgent;
+
+        /// <summary>
         /// User agent for the CoconutWax instance.
         /// </summary>
-        [SerializeField] private string userAgent = CoconutWax.DefaultUserAgent;
+        [SerializeField] private List<CustomUserAgent> customUserAgents;
 
         /// <summary>
         /// The CoconutWax instance managed by this MonoBehaviour.
@@ -48,7 +67,17 @@ namespace Wax
         /// </summary>
         private void Start()
         {
-            CoconutWax = new CoconutWax(port, userAgent);
+            if (useCustomUserAgent)
+            {
+                CustomUserAgent userAgent = customUserAgents.Find(x => x.Platform == Application.platform);
+                if (userAgent.IsValid)
+                {
+                    CoconutWax = new CoconutWax(port, userAgent.UserAgent);
+                    return;
+                }
+            }
+
+            CoconutWax = new CoconutWax(port);
         }
 
         /// <summary>
