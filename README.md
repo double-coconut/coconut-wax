@@ -62,7 +62,7 @@ through the Coconut Wax Editor and opens a web browser view in your game / app w
 | Mac OS    			 |  ❌     |
 | Windows   			 |  ❌     |
 | Mac OS(Unity Editor)   |  ✅     |
-| [Windows(Unity Editor)](https://docs.uniwebview.com/guide/faq.html#which-platforms-could-uniwebview-work-on)  |  ❌     |
+| [Windows(Unity Editor)](https://docs.uniwebview.com/guide/faq.html#which-platforms-could-uniwebview-work-on)  |  ❗     |
 | WebGL  				 |  ❌     |
 
 # Installation
