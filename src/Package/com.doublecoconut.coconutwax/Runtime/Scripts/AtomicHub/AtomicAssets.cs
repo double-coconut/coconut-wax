@@ -34,12 +34,16 @@ namespace AtomicHub
         public static Task<UserAssetsResponse<TAssetData>> GetUserAssets<TAssetData>(string owner,
             bool? isTransferable = null,
             int page = 1, int limit = 50,
+            string collectionName=null,
             CancellationToken cancellationToken = default)
         {
             string url = $"{BaseUrl}atomicassets/v1/assets?owner={owner}&page={page}&limit={limit}";
             if (isTransferable != null)
             {
                 url += $"&is_transferable={isTransferable.ToString().ToLower()}";
+            }
+            if(!string.IsNullOrEmpty(collectionName)){
+                url+=$"&collection_name={collectionName}";
             }
 
             IRequestClientSender request = RequestClient
