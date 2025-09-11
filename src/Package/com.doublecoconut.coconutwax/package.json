@@ -8,7 +8,7 @@
   "changelogUrl": "https://github.com/double-coconut/coconut-wax/blob/develop/changelog.md",
   "licensesUrl": "https://github.com/double-coconut/coconut-wax/blob/develop/LICENSE",
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "3.3.0"
+    "com.unity.nuget.newtonsoft-json": "3.2.1"
   },
   "keywords": [
     "waxjs",
