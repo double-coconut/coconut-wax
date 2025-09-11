@@ -17,7 +17,8 @@ namespace AtomicHub
         /// <summary>
         /// The base URL for the AtomicAssets API.
         /// </summary>
-        private const string BaseUrl = "https://wax.api.atomicassets.io/";
+        // private const string BaseUrl = "https://wax.api.atomicassets.io/";
+        private const string BaseUrl = "https://aa-api-wax-mainnet-1.eu.aws.pink.gg/";
 
         /// <summary>
         /// Sets default headers for the requests.
@@ -37,7 +38,8 @@ namespace AtomicHub
             string collectionName=null,
             CancellationToken cancellationToken = default)
         {
-            string url = $"{BaseUrl}atomicassets/v1/assets?owner={owner}&page={page}&limit={limit}";
+            // string url = $"{BaseUrl}atomicassets/v1/assets?owner={owner}&page={page}&limit={limit}";
+            string url = $"{BaseUrl}atomicmarket/v1/assets?owner={owner}&page={page}&limit={limit}";
             if (isTransferable != null)
             {
                 url += $"&is_transferable={isTransferable.ToString().ToLower()}";
