@@ -1,6 +1,6 @@
 {
   "name": "com.doublecoconut.coconutwax",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "displayName": "Coconut Wax",
   "description": "The Double Coconut WAX SDK is a full-fledged solution for easy and enhanced integration \nof the Wax Cloud Wallet, allowing for blockchain functionality into your apps. It bridges JavaScript and \nC# to make the experience of developers working with the WAX blockchain \neasy and seamless.",
   "unity": "2020.3",
